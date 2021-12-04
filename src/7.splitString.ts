@@ -9,3 +9,4 @@ type A2 = SplitString<"open-flag", "-">; // ["open", "flag"]
 type A3 = SplitString<"handle.open.flag", ".">; // ["handle", "open", "flag"]
 type A4 = SplitString<"open.flag", ".">; // ["open", "flag"]
 type A5 = SplitString<"open.flag", "-">; // ["open.flag"]
+export default {};

@@ -6,3 +6,4 @@ type RepeatString<
 > = K["length"] extends N ? Result : RepeatString<T, N, [...K, null], `${Result}${T}`>;
 type A = RepeatString<"a", 3>; // 'aaa'
 type B = RepeatString<"a", 0>; // ''
+export default {};
