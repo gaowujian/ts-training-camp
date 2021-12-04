@@ -21,12 +21,10 @@
 home.topBar.title | home.topBar.welcome | home.bottomBar.notes | login.username | login.password
 */
 type RemoveFirst<T extends string, K extends string = "."> = T extends `${K}${infer L}` ? L : T;
-type ObjectAccessPaths<T extends Record<string, any>, Result extends string = "", K = keyof T> = K extends keyof T
-  ? K extends string
-    ? T[K] extends Record<string, any>
-      ? ObjectAccessPaths<T[K], `${Result}.${K}`>
-      : RemoveFirst<`${Result}.${K}`>
-    : never
+type ObjectAccessPaths<T extends Record<string, any>, Result extends string = "", K = keyof T> = K extends string
+  ? T[K] extends Record<string, any>
+    ? ObjectAccessPaths<T[K], `${Result}.${K}`>
+    : RemoveFirst<`${Result}.${K}`>
   : never;
 
 // 完成 createI18n 函数中的 ObjectAccessPaths<Schema>，限制函数i18n的参数为合法的属性访问字符串
