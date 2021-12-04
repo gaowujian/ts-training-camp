@@ -6,3 +6,5 @@ type KebabCase<T extends string, Result extends string = ""> = T extends `${infe
   : RemoveFirst<Result>;
 type a1 = KebabCase<"HandleOpenFlag">; // handle-open-flag
 type a2 = KebabCase<"OpenFlag">; // open-flag
+
+export default {};
