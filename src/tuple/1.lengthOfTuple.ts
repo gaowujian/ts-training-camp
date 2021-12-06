@@ -3,3 +3,4 @@ type LengthOfTuple<T extends any[], Result extends any[] = []> = T extends [infe
   : Result["length"];
 type A = LengthOfTuple<["B", "F", "E"]>; // 3
 type B = LengthOfTuple<[]>; // 0
+export default {};
