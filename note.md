@@ -36,3 +36,7 @@ export const Collapse: React.FC<CollapseProps> = () => {
 
 const b = <Collapse onChange={() => {}} />;
 ```
+
+# tuple 中 flat 一题
+
+主要也是用了递归的思想，我们要理解一个递归函数的意义是什么。明确入参和返回值
