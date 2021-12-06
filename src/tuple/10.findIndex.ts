@@ -10,7 +10,7 @@ type Equal<T, R> = [T] extends [R]
 
 type AA = Equal<any, 1>;
 
-type FindIndex<T extends any[], K, N extends any[] = []> = T extends [infer L, ...infer R]
+export type FindIndex<T extends any[], K, N extends any[] = []> = T extends [infer L, ...infer R]
   ? Equal<L, K> extends true
     ? N["length"]
     : FindIndex<R, K, [...N, null]>
