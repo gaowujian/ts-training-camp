@@ -46,3 +46,26 @@ const b = <Collapse onChange={() => {}} />;
 any 可以看做 boolean | string | number |等等，所以 any extends 会发生分发现象
 
 在使用泛型的时候，如果 T 是一个联合类型，会引起一个类型分发的现象。如果想要避免的话，使用 [] 包括住前后内容，封装成一个元祖类型，可以避免分发。让前面的部分作为整体去查看是否满足后面部分的条件
+
+# 数组 infer 的时候相较于 string infer
+
+数组 infer 可以方便的拿到开头和结尾元素，不用像 string infer 一样，向下递归
+
+```
+type FirstItem<T extends any[]> = T extends [infer L, ...infer R] ? L : T;
+type LastItem<T extends any[]> = T extends [...infer L, infer R] ? R : never;
+```
+
+# 比 extends 更加严密的判等类型
+
+```
+type Equal<T, R> = [T] extends [R]
+  ? [R] extends [T]
+    ? keyof T extends keyof R
+      ? keyof R extends keyof T
+        ? true
+        : false
+      : false
+    : false
+  : false;
+```
