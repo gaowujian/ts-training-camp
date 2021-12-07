@@ -69,3 +69,13 @@ type Equal<T, R> = [T] extends [R]
     : false
   : false;
 ```
+
+# 元祖类型中遍历
+
+在数组中使用 如下的范式进行遍历，并把操作结果保存到 result 的暂存变量中
+
+```
+ type Slice <T,Result=[]> = T extends [infer First, ...infer Rest] ? Slice<Rest>:Result
+```
+
+在循环体内使用 if else 就是在使用 extends 关键子，并调用 Slice，使用递归的方式去遍历元祖类型
