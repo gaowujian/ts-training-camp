@@ -79,3 +79,14 @@ type Equal<T, R> = [T] extends [R]
 ```
 
 在循环体内使用 if else 就是在使用 extends 关键子，并调用 Slice，使用递归的方式去遍历元祖类型
+
+# 遍历联合类型, 如果一个类型是联合类型，在使用 extends 的时候会自动触发分发现象，实现一个遍历或者 map 的效果
+
+```
+K的初始值是T的所有key, 联合类型A去extends 联合类型B的时候，成功的时候就相当于去遍历每个属性，可以认为是数组中的每个元素,否则就是never
+type OptionalKeys <T, K = keyof T> = K extends keyof T ? K : never;
+
+在问号之后的K类型已经被缩小，K是针对每个属性
+```
+
+# 在使用 K = keyof T 之后, K 会默认获得一个联合类型 string|number|symbol
