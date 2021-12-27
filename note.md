@@ -90,3 +90,13 @@ type OptionalKeys <T, K = keyof T> = K extends keyof T ? K : never;
 ```
 
 # 在使用 K = keyof T 之后, K 会默认获得一个联合类型 string|number|symbol
+
+# 遍历一个对象类型 T 的所有属性的范式
+
+```
+第一个K是初始值，看成是数组 也就是T 类型的所有属性值组成的联合类型， 如果满足extends条件判断关键字，第二个K就变成了一个单一元素，实现了遍历效果
+第二个K是通过条件判断的单一值，看成是数组的元素
+
+type XX<T, K = keyof T> = K extends keyof T ? K : never
+
+```
