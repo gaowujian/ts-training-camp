@@ -100,3 +100,5 @@ type OptionalKeys <T, K = keyof T> = K extends keyof T ? K : never;
 type XX<T, K = keyof T> = K extends keyof T ? K : never
 
 ```
+
+# extends 是泛型约束的关键字 A extends B 如果成功的话 可以认为 A 类型的值可以赋值为 B 类型的值，否则不能
